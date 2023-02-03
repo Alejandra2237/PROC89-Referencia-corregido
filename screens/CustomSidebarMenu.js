@@ -17,11 +17,11 @@ export default class CustomSidebarMenu extends Component {
       }
       
       componentDidMount() {
-        // let theme;                           esta linea no es necesaria por que ya existe un this.state
+        
         firebase
           .database()
           .ref("/users/" + firebase.auth().currentUser.uid)
-          .on("value", (snapshot) => {                          // aqui cambie el codigo de el plan de estudios por que sin la flecha no se refiere a el estado en el que estan las cosas
+          .on("value", (snapshot) => {                         
             let theme = snapshot.val().current_theme;
             this.setState({ light_theme: theme === "light" ? true : false });
           });
